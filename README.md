@@ -5,8 +5,8 @@ This program creates a rectangular elevation map using a C port of OpenSimplexNo
 
 It expects the below parameters on standard input:
 
-- Height (> 0)
-- Width (> 0)
+- Height (> 1)
+- Width (> 1)
 - Elevation Min. (may be negative)
 - Elevation Max. (>= Elevation Min., may be negative)
 - Seed (64 bits integer)

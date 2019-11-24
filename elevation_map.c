@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
 	unsigned long height, width, map_size, y;
 	double *map, map_min, map_max;
 	int64_t seed;
-	if (argc != 1 || scanf("%lu%lu%d%d%"SCNi64"%d", &height, &width, &elevation_min, &elevation_max, &seed, &html_output) != 6 || height < 1 || width < 1 || elevation_min > elevation_max) {
-		fprintf(stderr, "%s: parameters expected on standard input: height width elevation_min elevation_max seed html_output\nheight > 0\nwidth > 0\nelevation_min <= elevation_max\n", argv[0]);
+	if (argc != 1 || scanf("%lu%lu%d%d%"SCNi64"%d", &height, &width, &elevation_min, &elevation_max, &seed, &html_output) != 6 || height < 2 || width < 2 || elevation_min > elevation_max) {
+		fprintf(stderr, "%s: parameters expected on standard input: height width elevation_min elevation_max seed html_output\nheight > 1\nwidth > 1\nelevation_min <= elevation_max\n", argv[0]);
 		fflush(stderr);
 		return EXIT_FAILURE;
 	}

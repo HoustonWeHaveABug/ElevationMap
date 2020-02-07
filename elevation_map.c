@@ -52,6 +52,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	if (html_output) {
+		double elevation_mid = elevation_min+(elevation_max-elevation_min)/2.0;
 		puts("<!DOCTYPE HTML>");
 		puts("<HTML DIR=\"ltr\" LANG=\"en\">");
 		puts("<HEAD>");
@@ -72,7 +73,15 @@ int main(int argc, char *argv[]) {
 			unsigned long x;
 			puts("<TR>");
 			for (x = 0; x < width; x++) {
-				int red = (int)((map[y*width+x]-elevation_min)/(elevation_max-elevation_min)*255), green = 255-red;
+				int red, green;
+				if (map[y*width+x] < elevation_mid) {
+					red = 255-(int)((elevation_mid-map[y*width+x])/(elevation_mid-elevation_min)*255);
+					green = 255;
+				}
+				else {
+					green = 255-(int)((map[y*width+x]-elevation_mid)/(elevation_max-elevation_mid)*255);
+					red = 255;
+				}
 				printf("<TD STYLE=\"background-color: #%02x%02x00;\"></TD>\n", red, green);
 			}
 			puts("</TR>");
